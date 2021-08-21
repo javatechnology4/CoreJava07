@@ -1,0 +1,15 @@
+/Address.hbm.xml
+/Category.hbm.xml
+/Message.hbm.xml
+/MyPack/
+/Stack.class
+/Test.class
+/TestStack.class
+/User.hbm.xml
+/application.properties
+/application.xml
+/application_annotation.xml
+/com/
+/hibernate.cfg.xml
+/hibernate.properties
+/log4j.properties

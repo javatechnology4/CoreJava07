@@ -1,0 +1,39 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping schema="hb"
+	package="com.spring.hibernate">
+	<class name="User" table="User">
+
+		<meta attribute="class-description">
+			This class contains the User detail.
+		</meta>
+
+		<id name="id" type="long" column="USER_ID">
+			<generator class="native" /> <!-- Identity, Sequence, hilo --> <!-- increment -->
+		</id>
+
+		<property name="username" column="USERNAME" type="string"
+			not-null="true" />
+		<property name="password" column="PASSWORD" type="string"
+			not-null="true" />
+		<component name="homeAddress" class="Address">
+			<parent name="user" />
+			<property name="street" type="string" column="HOME_STREET"
+				not-null="true"></property>
+			<property name="city" type="string" column="HOME_CITY"
+				not-null="true"></property>
+			<property name="zipcode" type="string" column="HOME_ZIPCODE"
+				not-null="true"></property>
+		</component>
+		<component name="billingAddress" class="Address">
+			<parent name="user" />
+			<property name="street" type="string" column="BILLING_STREET" ></property>
+			<property name="city" type="string" column="BILLING_CITY"></property>
+			<property name="zipcode" type="string" column="BILLING_ZIPCODE"></property>
+		</component>
+
+	</class>
+</hibernate-mapping>

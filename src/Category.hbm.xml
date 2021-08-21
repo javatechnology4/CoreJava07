@@ -1,0 +1,23 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping schema="hb" package="com.spring.hibernate">
+	<class name="Category" table="CATEGORY">
+
+		<meta attribute="class-description">
+			This class contains the Category detail.
+		</meta>
+
+		<id name="id" type="long" column="CATEGORY_ID">
+			<generator class="native" /> <!-- Identity, Sequence, hilo --> <!-- increment -->
+		</id>
+
+		<property name="name" column="CATEGORY_NAME" type="string" not-null="true" />
+		<!-- <property name="totalAmount"  type="big_decimal" not-null="true" formula="(select avg(b.amount) from balance b where b.balance_id=balance_id)"/> -->
+		<many-to-one name="parentCategory" column="PARENT_CATEGORY_ID"
+			cascade="all"></many-to-one>
+
+	</class>
+</hibernate-mapping>

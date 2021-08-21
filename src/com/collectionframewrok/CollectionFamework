@@ -1,0 +1,175 @@
+Java 1.2 ---> 
+Dictionary
+Vectory
+Stack
+Properties
+(Dynamic arrays, linked lists, trees,hash-table)
+LinkedList, HashSet and TreeSet 
+Iterator
+map interface and classes --->Map store key/value pairs.
+Java 1.5 Generics,autoboxing/unboxing for-each style loop
+
+Collection   Map
+interface Collection<E>
+int size();
+boolean isEmpty();
+boolean contains(Object o);
+ Iterator<E> iterator();
+ Object[] toArray();
+ <T> T[] toArray(T[] a);
+  boolean add(E e);
+  boolean remove(Object o);  
+  boolean containsAll(Collection<?> c);
+  boolean addAll(Collection<? extends E> c);
+  boolean removeAll(Collection<?> c);
+  boolean retainAll(Collection<?> c);
+  void clear();
+   boolean equals(Object o);
+    int hashCode();
+==============================================
+interface List<E> extends Collection<E>
+boolean addAll(int index, Collection<? extends E> c);
+E get(int index);
+E set(int index, E element);
+void add(int index, E element);
+E remove(int index);
+int indexOf(Object o);
+int lastIndexOf(Object o);
+ListIterator<E> listIterator();
+ListIterator<E> listIterator(int index);
+List<E> subList(int fromIndex, int toIndex);
+===============================================
+interface Set<E> extends Collection<E>
+========================================
+interface SortedSet<E> extends Set<E>{
+Comparator<? super E> comparator();
+SortedSet<E> subSet(E fromElement, E toElement);
+SortedSet<E> headSet(E toElement); //<toElement
+ SortedSet<E> tailSet(E fromElement); //greater than or equal to {@code fromElement}
+ E first();  //Returns the first (lowest) element currently in this set.
+ E last(); //  Returns the last (highest) element currently in this set
+ ====================================================
+ interface NavigableSet<E> extends SortedSet<E>
+  E lower(E e);  //Returns the greatest element in this set strictly less than the 
+  				given element, or {@code null} if there is no such element.
+  				
+E floor(E e);  // Returns the greatest element in this set less than or equal to
+     			* the given element, or {@code null} if there is no such element.
+     			
+ E ceiling(E e);  // Returns the least element in this set greater than or equal to
+     		* the given element, or {@code null} if there is no such element.
+
+E higher(E e);  // Returns the least element in this set strictly greater than the
+     			* given element, or {@code null} if there is no such element.
+     			
+E pollFirst(); // Retrieves and removes the first (lowest) element,
+     			* or returns {@code null} if this set is empty.
+     			
+E pollLast();  //Retrieves and removes the last (highest) element,
+     			* or returns {@code null} if this set is empty.
+     			
+Iterator<E> iterator();
+NavigableSet<E> descendingSet();
+Iterator<E> descendingIterator();
+NavigableSet<E> subSet(E fromElement, boolean fromInclusive,
+                           E toElement,   boolean toInclusive);
+                           
+NavigableSet<E> headSet(E toElement, boolean inclusive);  //Returns a view of the portion of this set whose elements are less than
+     														* (or equal to, if {@code inclusive} is true)
+     														
+NavigableSet<E> tailSet(E fromElement, boolean inclusive); // Returns a view of the portion of this set whose elements are greater
+     * than (or equal to, if {@code inclusive} is true) {@code fromElement}.
+     
+SortedSet<E> subSet(E fromElement, E toElement);
+SortedSet<E> headSet(E toElement);
+SortedSet<E> tailSet(E fromElement); 
+ 
+ ======================================
+ interface Queue<E> extends collection<E>
+  boolean add(E e);
+   boolean offer(E e);  // @return {@code true} if the element was added to this queue, else
+     				{@code false}
+E remove(); // Retrieves and removes the head of this queue.  This method differs
+     * from {@link #poll() poll()} only in that it throws an exception if
+     * this queue is empty.
+     
+E poll();  ;// Retrieves and removes the head of this queue,
+     * or returns {@code null} if this queue is empty
+     
+E element(); // Retrieves, but does not remove, the head of this queue.  This method
+     * differs from {@link #peek peek} only in that it throws an exception
+     * if this queue is empty.
+
+E peek(); // Retrieves, but does not remove, the head of this queue,
+     * or returns {@code null} if this queue is empty.
+ 
+ 
+ ===============================
+ interface Deque<E> extends Queue<E>
+   void addFirst(E e); // Inserts the specified element at the front of this deque  throwing an {@code IllegalStateException} if no space is currently
+    				 * available.
+
+void addLast(E e); // Inserts the specified element at the end of this deque throwing an {@code IllegalStateException} if no space is currently
+     			* available.
+     			
+  boolean offerFirst(E e); // {@code true} if the element was added to this deque, else
+     *         {@code false}
+     boolean offerLast(E e); // {@code true} if the element was added to this deque, else
+     *         {@code false}
+
+E removeFirst(); // Retrieves and removes the first element of this deque  @throws NoSuchElementException if this deque is empty
+ E removeLast();  // Retrieves and removes the last element of this deque  @throws NoSuchElementException if this deque is empty
+ E pollFirst(); //  Retrieves and removes the first element of this deque,
+     				* or returns {@code null} if this deque is empty.
+     				
+E pollLast();// Retrieves and removes the last element of this deque,
+     * or returns {@code null} if this deque is empty.
+     
+E getFirst(); //NoSuchElementException if this deque is empty
+ E getLast(); // NoSuchElementException if this deque is empty
+ E peekFirst(); // Retrieves, but does not remove, the first element of this deque,
+     			* or returns {@code null} if this deque is empty.
+     			
+ E peekLast(); // Retrieves, but does not remove, the last element of this deque,
+     			* or returns {@code null} if this deque is empty.
+     			
+boolean removeFirstOccurrence(Object o);   // Removes the first occurrence of the specified element from this deque.
+     * If the deque does not contain the element, it is unchanged.
+     * More formally, removes the first element {@code e} such that
+     * {@code Objects.equals(o, e)} (if such an element exists).
+     
+  boolean removeLastOccurrence(Object o);
+   void push(E e);
+    E pop();
+    boolean remove(Object o);
+     boolean contains(Object o);
+     int size();
+     Iterator<E> iterator();
+     Iterator<E> descendingIterator();
+=================================================
+interface Map<K,V>
+int size();
+boolean isEmpty();
+ boolean containsKey(Object key);
+  boolean containsKey(Object key);
+  V get(Object key);
+  V put(K key, V value);
+  V remove(Object key);
+  void putAll(Map<? extends K, ? extends V> m);
+  void clear();
+  Set<K> keySet();
+   Collection<V> values();
+   Set<Map.Entry<K, V>> entrySet();
+   
+   ==========================================
+   interface SortedMap<K,V> extends Map<K,V>{
+    SortedMap<K,V> subMap(K fromKey, K toKey);
+      SortedMap<K,V> headMap(K toKey);
+      SortedMap<K,V> tailMap(K fromKey);
+      K firstKey();
+       K lastKey();
+	Set<K> keySet();
+   Collection<V> values();
+   Set<Map.Entry<K, V>> entrySet();
+   ================================
+   

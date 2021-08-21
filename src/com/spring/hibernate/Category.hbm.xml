@@ -1,0 +1,26 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping schema="hb"
+	package="com.spring.hibernate">
+	<class name="Category" table="CATEGORY">
+
+		<meta attribute="class-description">
+			This class contains the Category detail.
+		</meta>
+
+		<id name="id" type="long" column="CATEGORY_ID">
+			<generator class="native" /> <!-- Identity, Sequence, hilo --> <!-- increment -->
+		</id>
+
+		<property name="name" column="CATEGORY_NAME" type="string" not-null="true" />
+		<many-to-one name="parentCategory" column="PARENT_CATEGORY_ID" class="Category" cascade="none"></many-to-one> 
+		<set name="childCategories" inverse="true" cascade="all">
+		<key column="PARENT_CATEGORY_ID"></key>
+		<one-to-many class="Category"/>
+		</set>
+
+	</class>
+</hibernate-mapping>

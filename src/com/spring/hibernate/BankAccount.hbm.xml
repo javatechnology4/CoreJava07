@@ -1,0 +1,23 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.spring.hibernate">
+	<class name="BankAccount" table="BANK_ACCOUNT">
+
+		<meta attribute="class-description">
+			This class contains the BankAccount detail.
+		</meta>
+
+		<id name="id" type="long" column="BANK_ACCOUNT_ID">
+			<generator class="increment" />
+		</id>
+
+
+		<property name="bankName" column="BANK_NAME" type="string"></property>
+		<property name="bankNumber" column="BANK_NUMBER" type="string"></property>
+
+
+	</class>
+</hibernate-mapping>

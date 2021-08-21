@@ -1,0 +1,41 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.spring.hibernate">
+	<class name="BillingDetails" table="BILLING_DETAILS">
+		<!-- discriminator-value="BD" -->
+		<meta attribute="class-description">
+			This class contains the BillingDetails detail.
+		</meta>
+
+		<id name="id" type="long" column="BILLING_DETAILS_ID">
+			<generator class="increment" />
+		</id>
+		<!-- <discriminator column="BILLING_DETAILS_TYPE" type="string"></discriminator> -->
+
+		<property name="owner" column="OWNER" type="string" />
+		<property name="number" column="NUMBER" type="string" />
+		<property name="createdDate" column="CREATED_DATE"
+			type="date" />
+		<joined-subclass name="CreditCard" table="CREDIT_CARD">
+			<key column="CREDIT_CARD_ID"></key>
+			<property name="type" column="CREDIT_CARD_TYPE" type="string"> </property>
+			<property name="expMonth" column="CREDIT_CARD_EXP_MONTH" type="string"></property>
+			<property name="expYear" column="CREDIT_CARD_EXP_YEAR" type="string"></property>
+		</joined-subclass>
+		<joined-subclass name="BankAccount"
+			table="BANK_ACCOUNT">
+			<key column="BANK_ACCOUNT_ID"></key>
+			<property name="bankName" column="BANK_NAME" type="string"></property>
+			<property name="bankNumber" column="BANK_NUMBER" type="string"></property>
+		</joined-subclass>
+		
+		<!-- <subclass name="CreditCard" discriminator-value="CC">   </subclass> <subclass 
+			name="BankAccount" discriminator-value="BA"> <property name="bankName" column="BANK_NAME" 
+			type="string"></property> <property name="bankNumber" column="BANK_NUMBER" 
+			type="string"></property> </subclass> -->
+
+	</class>
+</hibernate-mapping>

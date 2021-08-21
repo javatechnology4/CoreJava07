@@ -1,0 +1,22 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping schema="hb"
+	package="com.spring.hibernate">
+	<class name="Bid" table="BID">
+
+		<meta attribute="class-description">
+			This class contains the Bid detail.
+		</meta>
+
+		<id name="id" type="long" column="BID_ID">
+			<generator class="native" /> <!-- Identity, Sequence, hilo --> <!-- increment -->
+		</id>
+
+		<property name="amount" column="amount" type="string" not-null="true" />
+		<many-to-one name="item" column="ITEM_ID" class="Item" not-null="true"></many-to-one>
+
+	</class>
+</hibernate-mapping>

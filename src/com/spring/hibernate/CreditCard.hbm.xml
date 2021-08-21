@@ -1,0 +1,26 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.spring.hibernate">
+	<class name="CreditCard" table="CREDIT_CARD">
+
+		<meta attribute="class-description">
+			This class contains the CreditCard detail.
+		</meta>
+
+		<id name="id" type="long" column="CREDIT_CARD_ID">
+			<generator class="increment" />
+		</id>
+
+
+		<property name="type" column="CREDIT_CARD_TYPE" type="string"></property>
+		<property name="expMonth" column="CREDIT_CARD_EXP_MONTH"
+			type="string"></property>
+		<property name="expYear" column="CREDIT_CARD_EXP_YEAR"
+			type="string"></property>
+
+
+	</class>
+</hibernate-mapping>

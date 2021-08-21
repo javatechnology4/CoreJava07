@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.0.xsd" >
+	<!-- <bean id="greetingService"
+		class="com.spring.core.GreetingServiceImpl">
+
+		<property name="greeting" value="Welcome to Spring Framework"></property>
+	</bean>
+	<bean id="greetingService1" class="com.spring.core.GreetingServiceImpl"> 
+		<property name="greeting" value="Welcome to Spring Framework"></property> 
+		</bean>
+	<bean id="quest" class="com.spring.core.HolyGrail" />
+	<bean id="table" class="com.spring.core.RoundTable">
+		<constructor-arg value="ABC"></constructor-arg>
+		<property name="quest" ref="quest"></property>
+	</bean>
+	<bean id="performer1" class="com.spring.core.Juggler">
+	<constructor-arg value="15"></constructor-arg>
+	</bean>-->
+	<!-- <bean id="poem" class="com.spring.core.PoemImpl"/>
+	Poem poem=new PoemImpl();
+	<bean id="performer" class="com.spring.core.PoJuggler" autowire="constructor">
+	<constructor-arg value="15" />
+	<constructor-arg ref="poem" />
+</bean>  -->
+	<bean id="performer" class="com.spring.core.InstrumentList" autowire="byType" init-method="tuneInstrument" destroy-method="clearInstrument">
+	<property name="song" value='The value is #{"Bells"} Bells'></property>
+	<property name="message" value="#{saxophone.property.toUppercase()}"></property>
+	<property name="count" value="#{5}"></property>
+	<property name="instrument" value ="#{saxophone}"></property>
+	</bean>
+	<!-- <bean id="saxophone" class="com.spring.core.Saxophone" scope="prototype"/> -->
+	<!-- <bean id="saxophone" class="com.spring.core.Saxophone" />
+	<bean id="saxophone2" class="com.spring.core.SaxophoneImpl" /> -->
+	<bean id="saxophone" class="com.spring.core.Piano" scope="prototype" />
+
+	<!-- <bean id="performer" class="com.spring.core.OneManBand">
+		<property name="instruments">
+			<map>
+			<entry key="GUITAR" value-ref="saxophone1"></entry>
+			<entry key="PIANO" value-ref="saxophone2"></entry>
+			<entry key="INST" value-ref="saxophone3"></entry>
+			<entry key="INST" value-ref="saxophone3"></entry>
+				<ref bean="saxophone1" />
+				<ref bean="saxophone2" />
+				<ref bean="saxophone3" />
+				<ref bean="saxophone1" />
+			</map>
+			<props>
+			<prop key="GUITAR">TOOT TOOT TOOT TOOT</prop>
+			<prop key="PIANO">PLINK PLINK PLINK PLINK</prop>
+			<prop key="INST">Sax Sax Sax Sax</prop>
+			</props>
+		</property>
+	</bean> -->
+	<!--Performer performer=new PoJuggler();
+	performer.setPerformer();  -->
+</beans>
