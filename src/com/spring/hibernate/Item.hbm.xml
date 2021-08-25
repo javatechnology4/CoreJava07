@@ -5,12 +5,12 @@
 
 <hibernate-mapping schema="hb"
 	package="com.spring.hibernate">
-	<class name="Item" table="ITEM">
-
+	<class name="Item" table="ITEM" >
+		
 		<meta attribute="class-description">
 			This class contains the Item detail.
 		</meta>
-
+			<!-- <cache usage="read-write" include="all" region=""/> -->
 		<id name="id" type="long" column="ITEM_ID">
 			<generator class="native" /> <!-- Identity, Sequence, hilo --> <!-- increment -->
 		</id>
@@ -19,6 +19,7 @@
 		<property name="description" column="ITEM_DESCRIPTION" type="string" not-null="true" />
 		<!-- <many-to-one name="item" column="ITEM_ID" class="Item" not-null="true"></many-to-one>  -->
 		<set name="bids" inverse="true" cascade="all">
+		<!-- <cache usage="read-only"/> -->
 		<key column="ITEM_ID"></key>
 		<one-to-many class="Bid"/>
 		</set>

@@ -1,5 +1,12 @@
 package com.spring.hibernate;
 
+import java.io.Serializable;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
@@ -22,10 +29,45 @@ public class HibernateMain {
 		SessionFactory sessionFactory = cfg.buildSessionFactory();
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
-		Category category=(Category) session.get(Category.class, new Long(12));
-		System.out.println(category!=null?category.getName():null);
+		
+		User user=new User();
+		user.setUsername("OnetoOne");
+		user.setPassword("OnetoOne");
+		
+		Address address=new Address();
+		address.setStreet("Street");
+		address.setCity("City");
+		address.setZipcode("Zipcode");
+		address.setUser(user);
+		user.setAddress(address);
+		session.save(user);
 		transaction.commit();
 		session.close();
+		/*Transaction transaction = null;
+		
+		try {
+			transaction = session.beginTransaction();
+			submit(session);
+			session.flush();
+			transaction.commit();
+		}catch(Exception ex) {
+			if(transaction!=null) {
+				transaction.rollback();
+				System.out.println("line number 41");
+			}
+		}finally {
+			session.close();
+		}*/
+		
+		
+		
+		
+		
+		
+		/*Category category=(Category) session.get(Category.class, new Long(12));
+		System.out.println(category!=null?category.getName():null);
+		transaction.commit();
+		session.close();*/
 		/*Category category=new Category();
 		category.setName("Electronics");
 		session.save(category);*/
@@ -131,6 +173,13 @@ public class HibernateMain {
 		/*Message message = new Message("Welcome to Hibernate");
 		session.save(message);*/
 		//Serializable identifier = session.getIdentifier(message);
+		
+	}
+
+	private static void submit(Session session) {
+		@SuppressWarnings("deprecation")
+		Category category=(Category) session.load(Category.class, new Long(12),LockMode.UPGRADE);
+		System.out.println(category!=null?category.getName():null);
 		
 	}
 

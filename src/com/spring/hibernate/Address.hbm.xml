@@ -3,19 +3,26 @@
 "-//Hibernate/Hibernate Mapping DTD//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping schema="hb" package="com.spring.hibernate">
+<hibernate-mapping schema="hb"
+	package="com.spring.hibernate">
 	<class name="Address" table="ADDRESS">
 
 		<meta attribute="class-description">
 			This class contains the Address detail.
 		</meta>
 
-		<id name="id" type="long" column="ADDRESS_ID">
-			<generator class="native" /> <!-- Identity, Sequence, hilo --> <!-- increment -->
+		<id name="id" column="ADDRESS_ID">
+			<generator class="foreign">
+				<param name="property">user</param>
+			</generator>
 		</id>
 
-		<property name="street" column="STREET" type="string" not-null="true" />
-		<property name="city" column="CITY" type="string" not-null="true" />
-		<property name="zipcode" column="ZIPCODE" type="string" not-null="true" />
+		<property name="street" column="STREET" type="string"
+			not-null="true" />
+		<property name="city" column="CITY" type="string"
+			not-null="true" />
+		<property name="zipcode" column="ZIPCODE" type="string"
+			not-null="true" />
+		<one-to-one name="user" class="User" constrained="true" />
 	</class>
 </hibernate-mapping>

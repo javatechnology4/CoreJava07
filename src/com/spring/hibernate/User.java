@@ -4,8 +4,9 @@ public class User {
 	private Long id;
 	private String username;
 	private String password;
-	private Address homeAddress;
-	private Address billingAddress;
+	//private Address homeAddress;
+	//private Address billingAddress;
+	private Address address;
 	public User() {
 		// TODO Auto-generated constructor stub
 	}
@@ -33,8 +34,17 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
 
-	public Address getHomeAddress() {
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	/*public Address getHomeAddress() {
 		return homeAddress;
 	}
 
@@ -48,7 +58,7 @@ public class User {
 
 	public void setBillingAddress(Address billingAddress) {
 		this.billingAddress = billingAddress;
-	}
+	}*/
 	@Override
 	public boolean equals(Object obj) {
 		if(this==obj) return true;

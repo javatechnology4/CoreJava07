@@ -19,6 +19,7 @@
 			not-null="true" />
 		<property name="password" column="PASSWORD" type="string"
 			not-null="true" />
+		<one-to-one name="address" class="Address" cascade="all" ></one-to-one>
 		<!-- <component name="homeAddress" class="Address">
 			<parent name="user" />
 			<property name="street" type="string" column="HOME_STREET"
