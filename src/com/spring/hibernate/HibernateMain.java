@@ -30,19 +30,48 @@ public class HibernateMain {
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
 		
-		User user=new User();
-		user.setUsername("OnetoOne");
-		user.setPassword("OnetoOne");
+		/*User user=new User();
+		user.setUsername("Ramesh");
+		user.setPassword("Kumar");
 		
 		Address address=new Address();
-		address.setStreet("Street");
-		address.setCity("City");
-		address.setZipcode("Zipcode");
+		address.setStreet("Hi-tech city");
+		address.setCity("Hyderabad");
+		address.setZipcode("500078");
 		address.setUser(user);
 		user.setAddress(address);
 		session.save(user);
 		transaction.commit();
-		session.close();
+		session.close();*/
+		/*Item item1=new Item();
+		item1.setName("Laptop");
+		item1.setDescription("Lenovo Laptop Information");
+		
+		Item item2=new Item();
+		item2.setName("Desktop");
+		item2.setDescription("Dell Desktop Information");
+		
+		Category ca1=new Category();
+		ca1.setName("Computer");
+		
+		Category ca2=new Category();
+		ca2.setName("Mobile Phones");
+		ca2.getItems().add(item1);
+		ca2.getItems().add(item2);
+		
+		ca1.getItems().add(item1);
+		ca1.getItems().add(item2);
+		
+		item1.getCategories().add(ca1);
+		item1.getCategories().add(ca2);
+		
+		item2.getCategories().add(ca1);
+		item2.getCategories().add(ca2);
+		session.save(ca1);
+		session.save(ca2);
+		
+		transaction.commit();
+		session.close();*/
 		/*Transaction transaction = null;
 		
 		try {
@@ -70,8 +99,10 @@ public class HibernateMain {
 		session.close();*/
 		/*Category category=new Category();
 		category.setName("Electronics");
-		session.save(category);*/
-		/*Category category=(Category) session.get(Category.class, new Long(4));
+		session.save(category);
+		transaction.commit();
+		session.close();*/
+		/*Category category=(Category) session.get(Category.class, new Long(6));
 		Category laptops=new Category();
 		laptops.setName("Laptops");
 		Category la=new Category();
@@ -118,9 +149,9 @@ public class HibernateMain {
 			System.out.println("booth objects are same");*/
 		/*Item item=new Item();
 		item.setName("Mobile Phone");
-		item.setDescription("I phone Information");*/
+		item.setDescription("I phone Information");
 		//Set<Bid> bids=new HashSet<>();
-		/*Bid bid1=new Bid();
+		Bid bid1=new Bid();
 		bid1.setAmount("12000");
 		bid1.setItem(item);
 		
@@ -128,7 +159,10 @@ public class HibernateMain {
 		bid2.setAmount("14500");
 		bid2.setItem(item);
 		item.getBids().add(bid1);
-		item.getBids().add(bid2);*/
+		item.getBids().add(bid2);
+		session.save(item);
+		transaction.commit();
+		session.close();*/
 		//item.setBids(bids);
 		/*CreditCard cc=new CreditCard(); 
 		cc.setOwner("BILLING_DETAILS");
