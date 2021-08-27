@@ -6,7 +6,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.hibernate.Hibernate;
 import org.hibernate.LockMode;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
@@ -29,6 +31,52 @@ public class HibernateMain {
 		SessionFactory sessionFactory = cfg.buildSessionFactory();
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
+		Query createQuery = session.createQuery("from Category ca");
+		List<Category> categoryList = createQuery.list();
+		categoryList.stream().forEach(category->{System.out.println(category.getName());});
+		
+		/*Query createQuery = session.createQuery("from Category");
+		List<Category> categoryList = createQuery.list();
+		categoryList.stream().forEach(category->{System.out.println(category.getName());});
+		//List<Category> categoryList =(List<Category>)session.createSQLQuery("select ce.* from hb.ce_category ce").addEntity("ce",Category.class).list();
+		List<Category> categoryList =(List<Category>)session.createQuery("select {ce.*} from hb.ce_category ce").setEntity("ce", Category.class).list();
+		categoryList.stream().forEach(category->{System.out.println(category.getName());});*/
+		/*Query createQuery = session.createQuery("from Category");
+		createQuery.setFirstResult(3);
+		createQuery.setMaxResults(10);
+		List<Category> categoryList = createQuery.list();
+		categoryList.stream().forEach(category->{System.out.println(category.getName());});*/
+		
+		/*Bid bid = (Bid)session.createQuery(" from Bid b order by b.amount desc").setMaxResults(1).uniqueResult();
+		System.out.println(bid.getAmount());
+		System.out.println(bid.getId());
+		System.out.println(bid.getItem().getId());*/
+		
+		/*String hql="from Item item where item.description like :searchString";
+		List<Item> list = session.createQuery(hql).setString("searchString", "Lenovo Laptop Information").list();
+		list.stream().forEach(item->{
+			System.out.println(item.getDescription());
+			System.out.println(item.getName());});*/
+		/*String queryString="from Item item where item.description like ? and item.name =?";
+		List<Item> list = session.createQuery(queryString).setString(0, "Lenovo Laptop Information").setString(1, "Laptop").list();
+		list.stream().forEach(item->{
+			System.out.println(item.getDescription());
+			System.out.println(item.getName());});*/
+		/*Address address = (Address)session.get(Address.class, new Long(1));
+		String query="from User user where user.address=:address and user.username=:username";
+		@SuppressWarnings("unchecked")
+		List<User> list = session.createQuery(query).setParameter("address", address,Hibernate.entity(Address.class))
+		.setParameter("username", address.getUser().getUsername(),Hibernate.STRING).list();
+		list.forEach(user->{
+			System.out.println(user.getId());
+			System.out.println(user.getUsername());
+			System.out.println(user.getPassword());
+		});*/
+		
+		/*List<Item> list =session.getNamedQuery("findItemByDescription").setString("searchString", "Lenovo Laptop Information").list();
+		list.stream().forEach(item->{
+			System.out.println(item.getDescription());
+			System.out.println(item.getName());});*/
 		
 		/*User user=new User();
 		user.setUsername("Ramesh");

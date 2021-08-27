@@ -31,4 +31,8 @@
 		</set>
 
 	</class>
+	<query name="findItemByDescription">
+	from Item item where item.description like :searchString
+	</query>
+	
 </hibernate-mapping>
