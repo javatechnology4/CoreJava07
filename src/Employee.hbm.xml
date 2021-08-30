@@ -1,0 +1,27 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping schema="hb"
+	package="com.spring.hibernate">
+	<class name="Employee" table="Employee">
+
+		<meta attribute="class-description">
+			This class contains the Employee detail.
+		</meta>
+
+		<id name="id" type="long" column="EMPLOYEE_ID">
+			<!-- <generator class="native" /> Identity, Sequence, hilo increment -->
+		</id>
+
+		<property name="name" column="EMPLOYEE_NAME" type="string"
+			not-null="true" />
+		<property name="empCode" column="EMP_CODE" type="string"
+			not-null="true" />
+		<property name="jobRole" column="JOB_ROLE" type="string"
+			not-null="true" />
+		
+
+	</class>
+</hibernate-mapping>

@@ -11,7 +11,7 @@
 		</meta>
 
 		<id name="id" type="long" column="MESSAGE_ID">
-			<generator class="increment" />
+			<!-- <generator class="increment" /> -->
 		</id>
 
 		<property name="message" column="MESSAGE_TEXT" type="string" />
