@@ -16,7 +16,7 @@ public class CustomerDaoImpl implements CustomerDao{
 	@Override
 	public void saveCustomer(Customer customer) {
 		// TODO Auto-generated method stub
-		hibernateTemplate.save(customer);
+		hibernateTemplate.saveOrUpdate(customer);
 	}
 
 	@SuppressWarnings({ "unchecked", "deprecation" })
@@ -36,9 +36,9 @@ public class CustomerDaoImpl implements CustomerDao{
 	}
 
 	@Override
-	public void deleteCustomer(Long id) {
+	public void deleteCustomer(Customer customer) {
 		// TODO Auto-generated method stub
-		//hibernateTemplate.delete(entity);
+		hibernateTemplate.delete(customer);
 	}
 
 }

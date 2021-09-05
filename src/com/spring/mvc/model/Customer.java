@@ -1,9 +1,22 @@
 package com.spring.mvc.model;
 
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class Customer {
 	private Long id;
+	@Size(min=3,max=20, message="Customer name must be between 3 and 20 Characters")
+	@NotEmpty
 	private String name;
+	//@Pattern(regexp="[A-Za-z0-9]", message="Invalid email address")
+	@Email
 	private String email;
+	@Size(min=3,max=10, message="Customer Address must be between 3 and 10 Characters")
+	@NotBlank
 	private String address;
 	
 	public Customer() {

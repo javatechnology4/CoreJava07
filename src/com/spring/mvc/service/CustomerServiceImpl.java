@@ -11,9 +11,12 @@ import com.spring.mvc.model.Customer;
 public class CustomerServiceImpl implements CustomerService{
 	@Autowired
 	private CustomerDao customerDao;
+	@Autowired
+	private AlertService alertService;
 
 	@Override
 	public void saveCustomer(Customer customer) {
+		alertService.sendSpittleAlert(customer);
 		customerDao.saveCustomer(customer);
 		
 	}
@@ -31,9 +34,9 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 
 	@Override
-	public void deleteCustomer(Long id) {
+	public void deleteCustomer(Customer customer) {
 		// TODO Auto-generated method stub
-		customerDao.deleteCustomer(id);
+		customerDao.deleteCustomer(customer);
 	}
 
 }

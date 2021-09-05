@@ -8,6 +8,6 @@ public interface CustomerDao {
 	public void saveCustomer(Customer customer);
 	public List<Customer> getAllCustomers();
 	public Customer getCustomer(Long id);
-	public void deleteCustomer(Long id);
+	public void deleteCustomer(Customer customer);
 
 }
