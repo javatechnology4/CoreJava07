@@ -17,20 +17,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.mvc.model.Customer;
-import com.spring.mvc.service.AlertService;
 import com.spring.mvc.service.CustomerService;
 
 @Controller
 public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
-	@Autowired
-	private AlertService alertService;
+
 
 	@RequestMapping("/")
 	public ModelAndView home() {
 		List<Customer> allCustomers = customerService.getAllCustomers();
-		//System.out.println(alertService.getAlert());
 		ModelAndView mav = new ModelAndView("home");
 		mav.addObject("listOfCustomers", allCustomers);
 		return mav;

@@ -13,17 +13,20 @@ public class CustomerServiceImpl implements CustomerService{
 	private CustomerDao customerDao;
 	@Autowired
 	private AlertService alertService;
-
 	@Override
 	public void saveCustomer(Customer customer) {
-		alertService.sendSpittleAlert(customer);
+		alertService.sendCustomerAlert(customer);
 		customerDao.saveCustomer(customer);
 		
 	}
 
 	@Override
 	public List<Customer> getAllCustomers() {
-		// TODO Auto-generated method stub
+		/*Customer customer = alertService.getCustomerAlert();
+		if(customer!=null) {
+			System.out.println(customer.getName());	
+		}*/
+		
 		return customerDao.getAllCustomers();
 	}
 

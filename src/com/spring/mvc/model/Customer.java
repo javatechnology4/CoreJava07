@@ -1,5 +1,7 @@
 package com.spring.mvc.model;
 
+import java.io.Serializable;
+
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -7,7 +9,11 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
-public class Customer {
+public class Customer implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long id;
 	@Size(min=3,max=20, message="Customer name must be between 3 and 20 Characters")
 	@NotEmpty

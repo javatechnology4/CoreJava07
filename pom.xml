@@ -122,6 +122,7 @@
 			<artifactId>jackson-annotations</artifactId>
 			<version>2.2.3</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jms -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jms</artifactId>
@@ -133,10 +134,10 @@
 			<artifactId>activemq-core</artifactId>
 			<version>5.7.0</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-core</artifactId>
+			<artifactId>spring-security-config</artifactId>
 			<version>3.2.9.RELEASE</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
@@ -145,13 +146,6 @@
 			<artifactId>spring-security-web</artifactId>
 			<version>3.2.9.RELEASE</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-config</artifactId>
-			<version>3.2.9.RELEASE</version>
-		</dependency>
-
 
 
 

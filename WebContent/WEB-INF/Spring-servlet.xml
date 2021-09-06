@@ -14,41 +14,45 @@
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context-3.0.xsd
 	http://www.springframework.org/schema/security
- 	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 	<mvc:annotation-driven />
 	<context:component-scan
 		base-package="com.spring.mvc"></context:component-scan>
 	<!-- <mvc:resources location="" mapping=""/> -->
 	<tx:annotation-driven />
 	<security:http auto-config="true">
-		<security:intercept-url pattern="/**" access="ROLE_CUSTOMER" />
+		<security:intercept-url pattern="/**"
+			access="ROLE_CUSTOMER" />
 		<security:form-login />
-		<security:http-basic />
 		<security:logout />
 	</security:http>
 	<security:authentication-manager>
-	<security:authentication-provider>
-	<security:user-service>
-	<security:user name="habuma" password="letmein" authorities="ROLE_CUSTOMER"/>
-	</security:user-service>
-	</security:authentication-provider>
+		<security:authentication-provider>
+			<security:user-service>
+				<security:user name="customer" password="customer"
+					authorities="ROLE_CUSTOMER" />
+
+			</security:user-service>
+		</security:authentication-provider>
 	</security:authentication-manager>
 	<bean id="connectionFactory"
 		class="org.apache.activemq.spring.ActiveMQConnectionFactory">
-		<property name="brokerURL" value="tcp://localhost:61616" />
+		<property name="brokerURL" value="tcp://localhost:61616"></property>
+
 	</bean>
 	<bean id="queue" class="org.apache.activemq.command.ActiveMQQueue">
-		<constructor-arg value="spitter.queue" />
+		<constructor-arg value="customer.queue"></constructor-arg>
 	</bean>
 	<bean id="topic" class="org.apache.activemq.command.ActiveMQTopic">
-		<constructor-arg value="spitter.topic" />
+		<constructor-arg value="customer.topic"></constructor-arg>
 	</bean>
 	<bean id="jmsTemplate"
 		class="org.springframework.jms.core.JmsTemplate">
-		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="connectionFactory" ref="connectionFactory"></property>
 		<property name="defaultDestinationName"
-			value="spittle.alert.queue" />
+			value="customer.queue"></property>
 	</bean>
+
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/"></property>
@@ -89,26 +93,6 @@
 		<property name="password" value="JAVAtechnology"></property>
 	</bean>
 
-	<!-- <bean id="employeeService" class="com.spring.hibernate.EmployeeServiceImpl"> 
-		<property name="employeeDao" ref="employeeDao"></property> <property name="transactionTemplate" 
-		ref="transactionTemplate"></property> </bean> <bean id="transactionTemplate" 
-		class="org.springframework.transaction.support.TransactionTemplate"> <property 
-		name="transactionManager" ref="transactionManager"></property> </bean> <bean 
-		id="employeeDao" class="com.spring.hibernate.EmployeeDaoImpl"> <property 
-		name="hibernateTemplate" ref="hibernateTemplate"></property> </bean> <bean 
-		id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate"> 
-		<property name="sessionFactory" ref="sessionFactory"></property> </bean> 
-		<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager"> 
-		<property name="sessionFactory" ref="sessionFactory"></property> </bean> 
-		<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"> 
-		<property name="dataSource" ref="dataSource"></property> <property name="mappingResources"> 
-		<list> <value> Employee.hbm.xml</value> </list> </property> <property name="hibernateProperties"> 
-		<props> <prop key="hibernate.hbm2ddl.auto">update</prop> <prop key="hibernate.show_sql">true</prop> 
-		<prop key="hibernate.default_schema">hb</prop> </props> </property> </bean> 
-		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
-		<property name="driverClassName" value="org.postgresql.Driver"></property> 
-		<property name="url" value="jdbc:postgresql://localhost:5432/SpringJdbc"></property> 
-		<property name="username" value="postgres"></property> <property name="password" 
-		value="JAVAtechnology"></property> </bean> -->
+
 
 </beans>
