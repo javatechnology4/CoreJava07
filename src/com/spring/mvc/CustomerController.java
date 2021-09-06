@@ -30,7 +30,7 @@ public class CustomerController {
 	@RequestMapping("/")
 	public ModelAndView home() {
 		List<Customer> allCustomers = customerService.getAllCustomers();
-		System.out.println(alertService.getAlert());
+		//System.out.println(alertService.getAlert());
 		ModelAndView mav = new ModelAndView("home");
 		mav.addObject("listOfCustomers", allCustomers);
 		return mav;
